@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage {
+public class LoginPage extends HomePage{
 
 	
 	@FindBy(xpath="//*[@id='ctl00_body_plcLeft_lt_zR_LogInForm_loginElem_UserName']")

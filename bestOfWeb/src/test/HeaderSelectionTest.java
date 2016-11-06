@@ -14,7 +14,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class HomePageHeaderTest {
+public class HeaderSelectionTest {
 
 	private static final String BoW_Test = "http://lalitha.test.acem.org.au";
 
@@ -30,18 +30,9 @@ public class HomePageHeaderTest {
 		//assert(driver.getPageSource().contains("Hello Chris Clark"));
 
 		HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-		List<WebElement> tabs = homePage.getHeaderMenu();
 		
-		for(WebElement el : tabs){
-			JavascriptExecutor tabsJS = (JavascriptExecutor) driver;
-			System.out.println("El = " + el.getText());
-			tabsJS.executeScript("arguments[0].style.border = '1px solid red'",el);
-			try{
-				Thread.sleep(500);
-			} catch(InterruptedException ie){
-				ie.printStackTrace();
-			}
-		}
+		homePage.selectHeaderMenuOption("Reading List");
+		
 		try{
 			Thread.sleep(2000);
 		} catch(InterruptedException ie){

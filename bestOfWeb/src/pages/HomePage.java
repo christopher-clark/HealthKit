@@ -2,6 +2,7 @@ package pages;
 
 import java.util.List;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -30,6 +31,17 @@ public class HomePage {
 	@FindBy(xpath="//*[@id='top-menu']//a")
 	List<WebElement> header_menu;
 	
+	// Footer Elements
+	@FindBy(xpath="//*[@id='footer-bar']")
+	List<WebElement> footer;
+	
+	@FindBy(tagName="h1")
+	WebElement title;
+	
+	public String getTitle(){
+		return title.getText();
+	}
+	
 	public void searchForResource(String criteria){
 		high_level_search.sendKeys(criteria);
 		searchButton.click();
@@ -38,10 +50,14 @@ public class HomePage {
 	public List<WebElement> getHeaderMenu(){
 		return header_menu;
 	}
-	public void highlightTabs(){
+	public void selectHeaderMenuOption(String option){
 		for(WebElement el : header_menu){
+			if(el.getText().equalsIgnoreCase(option)){
+				System.out.println("Selecting - " + el.getText() );
+				el.click();
+				break;
+			}
 			
 		}
 	}
-	
 }
