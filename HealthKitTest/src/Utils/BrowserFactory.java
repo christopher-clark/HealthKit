@@ -1,4 +1,4 @@
-package utils;
+package Utils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -9,10 +9,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class BrowserFactory {
-
-	static WebDriver driver;
+static WebDriver driver;
 	
-	public static WebDriver startBrowser(String browserName, String url){
+	public static WebDriver startBrowser(String browserName){
 		
 		switch(browserName){
 			case "firefox" :
@@ -20,11 +19,9 @@ public class BrowserFactory {
 				driver = new FirefoxDriver();
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				driver.manage().window().maximize();
-				driver.get(url);
 				return driver;
 			case "chrome" :
 				System.setProperty("webdriver.chrome.driver", "C:\\Users\\Chris.Clark\\Browser Drivers\\chromedriver.exe");
-				driver = new ChromeDriver();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("test-type");
 				options.addArguments("start-maximized");
@@ -36,22 +33,19 @@ public class BrowserFactory {
 				options.addArguments("disable-infobars");
 				driver = new ChromeDriver(options);
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				//driver.manage().window().maximize(); 
-				driver.get(url);
+			//	driver.manage().window().maximize();
 				return driver;
 			case "IE" :
 				System.setProperty("webdriver.ie.driver", "C:\\Users\\Chris.Clark\\Browser Drivers\\IEDriverServer.exe");
 				WebDriver driverIE=new InternetExplorerDriver();
 				driverIE.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				driverIE.manage().window().maximize();
-				driverIE.get(url);
 				return driverIE;
 			default :
 				System.setProperty("webdriver.chrome.driver", "C:\\Chromedriver\\chromedriver.exe");
 				driver = new ChromeDriver();
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				driver.manage().window().maximize();
-				driver.get(url);
 				return driver;
 		}
 	}
