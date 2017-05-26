@@ -1,4 +1,4 @@
-package Healthkit.com.tests;
+package src.Healthkit.com.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
