@@ -11,12 +11,14 @@ import org.openqa.selenium.support.ui.Select;
 
 public class HealthKitPage {
 	
+	// Selectors
 	@FindBy(tagName="h1")
 	WebElement pageTitle;
 	
 	@FindBy(linkText="login/sign up")
 	WebElement login;
 	
+	// Added another comment
 	@FindBy(linkText="Join now")
 	WebElement join;
 	
