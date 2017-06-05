@@ -1,5 +1,7 @@
 package Utils;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -18,11 +20,17 @@ static WebDriver driver;
 				System.setProperty("webdriver.gecko.driver", "C:\\Users\\Chris.Clark\\Browser Drivers\\Geckodriver.exe");
 				driver = new FirefoxDriver();
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				driver.manage().window().maximize();
+				//driver.manage().window().maximize();
 				return driver;
 			case "chrome" :
 				System.setProperty("webdriver.chrome.driver", "C:\\Users\\Chris.Clark\\Browser Drivers\\chromedriver.exe");
 				ChromeOptions options = new ChromeOptions();
+				// Stops Chrome from asking to save your password when you log on
+				Map<String, Object> prefs = new HashMap<String, Object>();
+				prefs.put("credentials_enable_service", false);
+				prefs.put("profile.password_manager_enabled", false);
+				options.setExperimentalOptions("prefs", prefs);
+				
 				options.addArguments("test-type");
 				options.addArguments("start-maximized");
 				options.addArguments("--js-flags=--expose-gc");  

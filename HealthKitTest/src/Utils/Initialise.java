@@ -1,4 +1,4 @@
-package src.Healthkit.com.tests;
+package Utils;
 
 import org.openqa.selenium.WebDriver;
 
